@@ -5,6 +5,7 @@ import HomePage from './pages/Home';
 import ErrorPage from './pages/Error';
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
+import { action as authAction } from './actions/auth-actions'
 
 const router = createBrowserRouter([
   {
@@ -13,8 +14,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'login', element: <LoginPage /> },
-      { path: 'signup', element: <SignupPage /> },
+      { path: 'login', element: <LoginPage />, action: authAction },
+      { path: 'signup', element: <SignupPage />, action: authAction },
     ],
   },
 ]);

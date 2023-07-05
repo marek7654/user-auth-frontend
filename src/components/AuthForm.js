@@ -1,15 +1,29 @@
-import { Form } from 'react-router-dom';
+import { Form, useActionData} from 'react-router-dom';
 
 const AuthForm = () => {
+  const data = useActionData();
+  console.log(data);
+
   return (
     <Form
       method='post'
       className='mw-100 mx-auto mt-5'
       style={{ width: '300px' }}
     >
+      {data && data.errors && (
+        <ul>
+          {Object.values(data.errors).map((err) => (
+            <li key={err}>{err}</li>
+          ))}
+        </ul>
+      )}
+
+      {data && data.message && <p className='text-danger'>{data.message}</p>}
+
       <div className='form-floating pb-3'>
         <input
           type='email'
+          name='email'
           className='form-control'
           id='floatingInput'
           placeholder='name@example.com'
@@ -19,6 +33,7 @@ const AuthForm = () => {
       <div className='form-floating pb-3'>
         <input
           type='password'
+          name='password'
           className='form-control'
           id='floatingPassword'
           placeholder='Hasło'
