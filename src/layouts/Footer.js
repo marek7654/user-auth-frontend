@@ -1,10 +1,10 @@
 const Footer = () => {
   return (
-    <div className='container'>
-      <footer className='pt-3 mt-4 text-muted border-top text-center'>
+    <footer className='pt-3 mt-auto text-muted border-top text-center'>
+      <div className='container'>
         <p>© 2023 - made by zboro.dev</p>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };
 

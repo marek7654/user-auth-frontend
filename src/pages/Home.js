@@ -28,7 +28,7 @@ const HomePage = () => {
             <Button
               link='signup'
               title='Załóż konto'
-              btnClasses='btn btn-outline-secondary'
+              btnClasses='btn btn-outline-success'
             />
           </Column>
         </div>
