@@ -1,5 +1,6 @@
-import { json } from "react-router-dom";
+import { json, redirect } from "react-router-dom";
 import { settings } from "./settings";
+import { storeAuthToken } from "./util";
 
 export const action = async ({ request }) => {
 
@@ -33,5 +34,13 @@ export const action = async ({ request }) => {
     );
   }
   console.log(response);
-  return response;
+  
+  const resData = await response.json();
+  if (resData.token) {
+    storeAuthToken(resData.token);
+    console.log(resData.token);
+  }
+
+  return redirect('/dashboard');
+
 };

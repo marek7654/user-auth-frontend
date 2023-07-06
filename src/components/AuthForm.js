@@ -1,8 +1,7 @@
-import { Form, useActionData} from 'react-router-dom';
+import { Form, useActionData } from 'react-router-dom';
 
 const AuthForm = () => {
   const data = useActionData();
-  console.log(data);
 
   return (
     <Form
