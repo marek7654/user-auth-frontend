@@ -7,6 +7,7 @@ import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
 import DashboardPage, { loader as dashboardLoader } from './pages/Dashboard';
 import { action as authAction } from './actions/auth-actions';
+import { action as logoutAction } from './actions/logout-action';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
         element: <DashboardPage />,
         loader: dashboardLoader,
       },
+      { path: 'logout', action: logoutAction },
     ],
   },
 ]);

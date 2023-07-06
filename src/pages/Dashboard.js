@@ -14,7 +14,7 @@ const Dashboard = () => {
         zalogowanych użytkowników.
       </p>
       <Button
-        link='login'
+        link='/login'
         title='Zaloguj się'
         btnClasses='btn btn-primary'
       />

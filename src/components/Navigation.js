@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { Form, NavLink } from 'react-router-dom';
 
 const routes = [
-  { url: '', name: 'Home' },
-  { url: 'login', name: 'Zaloguj się' },
-  { url: 'signup', name: 'Załóż konto' },
+  { url: '/', name: 'Home' },
+  { url: '/dashboard', name: 'Dashboard' },
+  { url: '/login', name: 'Zaloguj się' },
+  { url: '/signup', name: 'Załóż konto' },
 ];
 
 const Navigation = () => {
@@ -23,7 +24,9 @@ const Navigation = () => {
             </NavLink>
           </li>
         ))}
-        
+        <Form action='/logout' method="POST">
+          <input className="nav-link" type='submit' value='Wyloguj' />
+        </Form>
       </ul>
     </div>
   );
