@@ -1,13 +1,12 @@
 import { Suspense } from 'react';
 import { useLoaderData, defer, Await } from 'react-router-dom';
-import { settings } from '../actions/settings';
-import { getAuthToken } from '../actions/util';
 import Hero from '../components/Hero';
 import Button from '../components/Button';
+import { loadDashboard } from '../actions/dashboard-action';
 
 const Dashboard = () => {
   const { dashboardContent } = useLoaderData();
-  
+
   const noPermissionMessege = (
     <>
       <p>
@@ -38,20 +37,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-async function loadDashboard() {
-  const token = getAuthToken();
-
-  const response = await fetch(settings.backendURL + settings.dashboardURI, {
-    method: 'GET',
-    headers: {
-      Authorization: 'Bearer ' + token,
-    },
-  });
-
-  const resData = await response.json();
-  return resData;
-}
 
 export function loader() {
   return defer({
