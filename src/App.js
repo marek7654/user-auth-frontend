@@ -5,8 +5,8 @@ import HomePage from './pages/Home';
 import ErrorPage from './pages/Error';
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
-import DashboardPage from './pages/Dashboard';
-import { action as authAction } from './actions/auth-actions'
+import DashboardPage, { loader as dashboardLoader } from './pages/Dashboard';
+import { action as authAction } from './actions/auth-actions';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,11 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: 'login', element: <LoginPage />, action: authAction },
       { path: 'signup', element: <SignupPage />, action: authAction },
-      { path: '/dashboard', element: <DashboardPage /> },
+      {
+        path: '/dashboard',
+        element: <DashboardPage />,
+        loader: dashboardLoader,
+      },
     ],
   },
 ]);
