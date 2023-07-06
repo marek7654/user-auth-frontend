@@ -1,7 +1,8 @@
 import { Form, useActionData } from 'react-router-dom';
 
-const AuthForm = () => {
+const AuthForm = (props) => {
   const data = useActionData();
+  const messageClass = data && data.correct ? 'text-success' : 'text-danger';
 
   return (
     <Form
@@ -17,7 +18,7 @@ const AuthForm = () => {
         </ul>
       )}
 
-      {data && data.message && <p className='text-danger'>{data.message}</p>}
+      {data && data.message && <p className={`text-center ${messageClass}`}>{data.message}</p>}
 
       <div className='form-floating pb-3'>
         <input
@@ -41,7 +42,7 @@ const AuthForm = () => {
       </div>
 
       <button className='w-100 btn btn-lg btn-primary' type='submit'>
-        Zaloguj
+        {props.register ? 'Zarejestruj' : 'Zaloguj'}
       </button>
     </Form>
   );

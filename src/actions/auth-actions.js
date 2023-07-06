@@ -1,16 +1,15 @@
-import { json, redirect } from "react-router-dom";
-import { settings } from "./settings";
-import { storeAuthToken } from "./util";
+import { json, redirect } from 'react-router-dom';
+import { settings } from './settings';
+import { storeAuthToken } from './util';
 
 export const action = async ({ request }) => {
-
   const loginPage = window.location.pathname === '/login';
   const uri = loginPage ? settings.loginURI : settings.registerURI;
   const authUserPropertyName = loginPage ? 'username' : 'email';
 
   const data = await request.formData();
 
-  const authData = {}
+  const authData = {};
   authData.password = data.get('password');
   authData[authUserPropertyName] = data.get('email');
 
@@ -33,14 +32,15 @@ export const action = async ({ request }) => {
       { status: 500 }
     );
   }
-  console.log(response);
-  
+
   const resData = await response.json();
-  if (resData.token) {
-    storeAuthToken(resData.token);
-    console.log(resData.token);
+
+  if (loginPage) {
+    if (resData.token) {
+      storeAuthToken(resData.token);
+    }
+    return redirect('/dashboard');
   }
 
-  return redirect('/dashboard');
-
+  return json({ message: resData.message, correct: true }, { status: 200 });
 };
