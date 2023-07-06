@@ -7,17 +7,14 @@ import Button from '../components/Button';
 
 const Dashboard = () => {
   const { dashboardContent } = useLoaderData();
+  
   const noPermissionMessege = (
     <>
       <p>
         Nie masz uprawnień, aby zobaczyć tę stronę. Treść dostępna tylko dla
         zalogowanych użytkowników.
       </p>
-      <Button
-        link='/login'
-        title='Zaloguj się'
-        btnClasses='btn btn-primary'
-      />
+      <Button link='/login' title='Zaloguj się' btnClasses='btn btn-primary' />
     </>
   );
 
@@ -51,9 +48,8 @@ async function loadDashboard() {
       Authorization: 'Bearer ' + token,
     },
   });
-  console.log('response', response);
+
   const resData = await response.json();
-  console.log('resData', resData);
   return resData;
 }
 

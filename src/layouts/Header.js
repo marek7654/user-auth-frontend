@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useRouteLoaderData } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
 const Header = () => {
+  const token = useRouteLoaderData('root');
+  const brandLink = token ? '/dashboard' : '/';
+
   return (
     <header>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
         <div className='container'>
-          <Link className='navbar-brand' to=''>
+          <Link className='navbar-brand' to={brandLink}>
             User auth app
           </Link>
           <button

@@ -8,12 +8,15 @@ import SignupPage from './pages/Signup';
 import DashboardPage, { loader as dashboardLoader } from './pages/Dashboard';
 import { action as authAction } from './actions/auth-actions';
 import { action as logoutAction } from './actions/logout-action';
+import { loadToken } from './actions/util';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    id: 'root',
+    loader: loadToken,
     children: [
       { index: true, element: <HomePage /> },
       { path: 'login', element: <LoginPage />, action: authAction },

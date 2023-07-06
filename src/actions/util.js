@@ -10,3 +10,7 @@ export const storeAuthToken = (token) => {
 export const removeAuthToken = () => {
   localStorage.removeItem('token');
 }
+
+export const loadToken = () => {
+  return getAuthToken() || null;
+}
